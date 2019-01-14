@@ -1,0 +1,222 @@
+<head>
+<style>
+.collapsible {
+  cursor: pointer;
+  background-color: #FFFFFF;
+  padding: 10px;
+  width: 100%;
+  border: none;
+  text-align: left;
+  outline: none;
+  font-size: 12px;
+  color: rgb(119, 119, 119);
+  font-family: Avenir,Helvetica,Arial,sans-serif;
+  font-weight: bold;
+}
+
+.active, .collapsible:hover {
+}
+
+.collapsible:after {
+  content: '\002B';
+  float: left;
+  margin-right: 15px;
+}
+
+.active:after {
+  content: "\2212";
+}
+
+.content {
+  padding: 0 18px;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.2s ease-out;
+  margin-left: 25px;
+}
+
+.line {
+  padding: 3px 3px 3px 3px;
+  font-size: 12px;
+  float: left;
+}
+
+.error {
+	font-weight: bold;
+	color: #ffac2c;
+	  font-family: Avenir,Helvetica,Arial,sans-serif;
+}
+
+.warning {
+	font-weight: bold;
+	color: #ffd62c;
+	  font-family: Avenir,Helvetica,Arial,sans-serif;
+}
+
+.critical {
+	font-weight: bold;
+	color: #ff2c2c;
+	  font-family: Avenir,Helvetica,Arial,sans-serif;
+}
+
+.country {
+	font-weight: normal;
+	color: #737373;
+	font-family: Avenir,Helvetica,Arial,sans-serif;
+}
+
+.id {
+	font-weight: normal;
+	color: #737373;
+	font-family: Avenir,Helvetica,Arial,sans-serif;
+}
+
+.wrapper {
+
+	}
+	
+.wrapperLeft {
+	float: left;
+	}
+	
+.wrapperRight {
+
+	}
+
+.container {
+  display: flex;
+}
+
+.itemIcon {
+  order: 0;
+  padding: 3px 3px 3px 3px;
+  font-size: 14px;
+  color: rgb(119, 119, 119);
+}	
+
+.itemInfo {
+  order: 1;
+}
+
+.debug {
+	font-family: Avenir,Helvetica,Arial,sans-serif;
+	background-color: #e5e5e5;
+	width: 33%;
+}
+
+.clear { clear:both; display:block; overflow:hidden; visibility:hidden; height:0px;}
+</style>
+<!-- jquery link must be ;) -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<!-- //////////////////////////// -->
+<!-- rest of jquery stuff mostly for debug options - changeColor functions -->
+
+<script>
+function changeColorAlert(id)
+{
+  document.getElementById(id).style.color = "#ff0000"; // CRITICAL
+  document.getElementById(id).innerHTML = "[!!NUCLEAR LAUNCH DETECTED!!]";
+}
+</script>
+
+<script>
+function changeColorOk(id)
+{
+  document.getElementById(id).style.color = "#16ff01"; // Ok
+   document.getElementById(id).innerHTML = "[>>ALL IS OK!<<]";
+}
+</script>
+
+<script>
+function changeColorAlertLocation(id)
+{
+  document.getElementById(id).style.color = "#ff0000"; // CRITICAL
+}
+</script>
+
+<script>
+function changeColorOkLocation(id)
+{
+  document.getElementById(id).style.color = "#16ff01"; // OK
+
+}
+</script>
+
+<script>
+function AlertCityCritical(id)
+{
+  document.getElementById(id).style.color = "#ff0000"; // CRITICAL
+}
+</script>
+
+<script>
+function AlertCityOk(id)
+{
+  document.getElementById(id).style.color = "#16ff01"; // OK
+
+}
+</script>
+<!-- //////////////////////////// -->
+<!-- font awesome link - required for glyph icons that are nice with status stuff -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<!-- //////////////////////////// -->
+
+</head>
+<body>
+<!-- //////////////////////////// -->
+<!-- BEGIN LOCATION               -->
+<!-- //////////////////////////// -->
+<button class="collapsible"><span id="AlertButton"><i class="fa fa-exclamation-triangle"></i></span>&nbspEMEA&nbsp</button>
+
+
+
+<div class="content">
+<!-- //////////////////////////// -->
+<!-- BEGIN ROW                    -->
+<!-- //////////////////////////// -->
+<div>
+<div class="line">
+<div class="container">
+<div class="itemIcon">
+<span id="AlertCityLine"><i class="fa fa-exclamation-triangle"></i></span>
+</div>
+<div class="itemInfo">
+<div class="line"><span class="id">335</span>&nbsp-&nbsp<span class="country">Poland&nbsp/&nbspWroclaw&nbsp&nbsp</span><span class="critical">critical:&nbsp0&nbsp</span>&nbsp<span class="error">error:&nbsp0</span>&nbsp<span class="warning">warning:&nbsp0</span></div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="clear"></div>
+<!-- //////////////////////////// -->
+<!-- END   ROW                    -->
+<!-- //////////////////////////// -->
+
+</div>
+<!-- //////////////////////////// -->
+<!-- END   LOCATION               -->
+<!-- //////////////////////////// -->
+
+
+</body>
+<!-- //////////////////////////// -->
+<!-- script required for animated menu stuff -->
+<!-- //////////////////////////// -->
+<script>
+var coll = document.getElementsByClassName("collapsible");
+var i;
+
+for (i = 0; i < coll.length; i++) {
+  coll[i].addEventListener("click", function() {
+    this.classList.toggle("active");
+    var content = this.nextElementSibling;
+    if (content.style.maxHeight){
+      content.style.maxHeight = null;
+    } else {
+      content.style.maxHeight = content.scrollHeight + "px";
+    } 
+  });
+}
+</script>
+<!-- //////////////////////////// -->
+
